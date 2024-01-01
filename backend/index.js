@@ -8,7 +8,7 @@ dotenv.config()
 
 mongoose.connect(process.env.MONGO_CLOUD_URL)
   .then(() => {
-    console.log('coonect to mongoDB')
+    console.log('connect to mongoDB')
   }).catch((err) => {
     console.log(err)
   })
@@ -21,4 +21,14 @@ app.listen(3000, () => {
 
 app.use("/api/user", userRouter)
 app.use("/api/auth", authRouter)
+
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || 'internal Server Error'
+  return res.status(statusCode).json({
+    success: false,
+    statusCode,
+    message,
+  })
+})
 

@@ -1,7 +1,8 @@
 import User from "../models/userModel.js"
 import bcrybtjs from 'bcryptjs'
+import { errorHandler } from "../utils/error.js"
 
-export const signupCtrl = async (req, res) => {
+export const signupCtrl = async (req, res, next) => {
 
     const { username, email, password } = req.body
     const hashedPassowrd = bcrybtjs.hashSync(password, 10)
@@ -10,7 +11,6 @@ export const signupCtrl = async (req, res) => {
         await user.save()
         res.status(201).json('user created successfully!')
     } catch (error) {
-        res.status(500).json(error.message)
+        next(error)
     }
-
 }
