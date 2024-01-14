@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice.js'
+import QAuth from '../components/QAuth.jsx'
 
 export default function SignIn() {
   const [formData, setFormData] = useState({})
@@ -48,6 +49,7 @@ export default function SignIn() {
         <button disabled={loading} className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95' >
           {loading ? 'loading...' : 'sign In'}
         </button>
+        <QAuth />
       </form>
       <div className='flex gap-2 mt-5onC'>
         <p> Dont have an account?</p>
