@@ -8,5 +8,5 @@ router.get('/test', (req, res) => {
         message: 'hello word',
     })
 })
-router.put('/update/:id',verifyToken, updateUserCtrl )
+router.post('/update/:id',verifyToken, updateUserCtrl )
 export default router;
