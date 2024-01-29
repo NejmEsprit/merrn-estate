@@ -79,7 +79,7 @@ export default function Profile() {
     try {
       dispatch(deleteUserStart())
       const res = fetch(`/api/user/delete/${currentUser._id}`, {
-        method: 'DELETE',
+        method: 'DELETE'
       })
       const data = (await res).json()
       if (data.success === false) {
